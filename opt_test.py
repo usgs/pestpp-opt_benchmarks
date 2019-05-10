@@ -129,9 +129,9 @@ def est_res_test():
     slave_d = os.path.join("opt_supply2_chance")
     t_d = os.path.join(slave_d,"template")
     m_d = os.path.join(slave_d,"master")
-    if os.path.exist(m_d):
+    if os.path.exists(m_d):
         shutil.rmtree(m_d)
-    
+
     pst = pyemu.Pst(os.path.join(t_d,"supply2_pest.base.pst"))
     obs = pst.observation_data
     obs.loc[:,"weight"] = 1.0
