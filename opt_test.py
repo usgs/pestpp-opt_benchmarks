@@ -129,6 +129,9 @@ def est_res_test():
     slave_d = os.path.join("opt_supply2_chance")
     t_d = os.path.join(slave_d,"template")
     m_d = os.path.join(slave_d,"master")
+    if os.path.exist(m_d):
+        shutil.rmtree(m_d)
+    
     pst = pyemu.Pst(os.path.join(t_d,"supply2_pest.base.pst"))
     obs = pst.observation_data
     obs.loc[:,"weight"] = 1.0
@@ -147,7 +150,7 @@ def est_res_test():
     assert opt is not None
     res_est1 = pyemu.pst_utils.read_resfile(os.path.join(m_d,"supply2_pest.base.1.est+fosm.rei"))
 
-    for f in ["supply2_pest.base.1.jcb","supply2_pest.base.jcb.1.rei"]:
+    for f in ["supply2_pest.base.1.jcb","supply2_pest.base.1.jcb.rei"]:
         shutil.copy2(os.path.join(m_d,f),os.path.join(t_d,f))
     pst = pyemu.Pst(os.path.join(t_d,"supply2_pest.base.pst"))
     pst.pestpp_options["opt_skip_final"] = True
