@@ -115,7 +115,7 @@ def run_supply2_test():
     slave_d = os.path.join("opt_supply2_chance")
     pyemu.os_utils.start_slaves(os.path.join(slave_d, "template"), exe_path, "supply2_pest.base.pst",
                                 master_dir=os.path.join(slave_d, "master"), slave_root=slave_d, num_slaves=10,
-                                verbose=True)
+                                verbose=True,port=4200)
 
     opt = None
     with open(os.path.join(slave_d, "master", "supply2_pest.base.rec"), 'r') as f:
@@ -125,6 +125,48 @@ def run_supply2_test():
     assert opt is not None
 
 
+def est_res_test():
+    slave_d = os.path.join("opt_supply2_chance")
+    t_d = os.path.join(slave_d,"template")
+    m_d = os.path.join(slave_d,"master")
+    pst = pyemu.Pst(os.path.join(t_d,"supply2_pest.base.pst"))
+    obs = pst.observation_data
+    obs.loc[:,"weight"] = 1.0
+    pst.pestpp_options["opt_risk"] = 0.05
+    pst.pestpp_options["opt_std_weights"] = True
+    pst.write(os.path.join(t_d,"supply2_pest.base.pst"))
+    pyemu.os_utils.start_slaves(os.path.join(slave_d, "template"), exe_path, "supply2_pest.base.pst",
+                                master_dir=os.path.join(slave_d, "master"), slave_root=slave_d, num_slaves=10,
+                                verbose=True,port=4200)
+
+    opt = None
+    with open(os.path.join(slave_d, "master", "supply2_pest.base.rec"), 'r') as f:
+        for line in f:
+            if "iteration 1 objective function value:" in line:
+                opt = float(line.strip().split()[-2])
+    assert opt is not None
+    res_est1 = pyemu.pst_utils.read_resfile(os.path.join(m_d,"supply2_pest.base.1.est+fosm.rei"))
+
+    for f in ["supply2_pest.base.1.jcb","supply2_pest.base.jcb.1.rei"]:
+        shutil.copy2(os.path.join(m_d,f),os.path.join(t_d,f))
+    pst = pyemu.Pst(os.path.join(t_d,"supply2_pest.base.pst"))
+    pst.pestpp_options["opt_skip_final"] = True
+    pst.pestpp_options["base_jacobian"] = "supply2_pest.base.1.jcb"
+    pst.pestpp_options["hotstart_resfile"] = "supply2_pest.base.jcb.1.rei"
+    pst.write(os.path.join(t_d,"pest_est_res.pst"))
+    m_d = os.path.join(slave_d,"master_est_res")
+    if os.path.exists(m_d):
+        shutil.rmtree(m_d)
+    shutil.copytree(t_d,m_d)
+    pyemu.os_utils.run("{0} pest_est_res.pst".format(exe_path),cwd=m_d)
+    res_est2 = pyemu.pst_utils.read_resfile(os.path.join(m_d,"pest_est_res.1.est+fosm.rei"))
+    diff = (res_est1.modelled - res_est2.modelled).apply(np.abs)
+    print(diff.sum())
+    assert diff.sum() < 1.0e-10
+
+
+
 if __name__ == "__main__":
-    # std_weights_test()
-    run_supply2_test()
+    #std_weights_test()
+    #run_supply2_test()
+    est_res_test()
