@@ -155,7 +155,7 @@ def est_res_test():
     pst = pyemu.Pst(os.path.join(t_d,"supply2_pest.base.pst"))
     pst.pestpp_options["opt_skip_final"] = True
     pst.pestpp_options["base_jacobian"] = "supply2_pest.base.1.jcb"
-    pst.pestpp_options["hotstart_resfile"] = "supply2_pest.base.jcb.1.rei"
+    pst.pestpp_options["hotstart_resfile"] = "supply2_pest.base.1.jcb.rei"
     pst.write(os.path.join(t_d,"pest_est_res.pst"))
     m_d = os.path.join(slave_d,"master_est_res")
     if os.path.exists(m_d):
