@@ -114,7 +114,7 @@ def scrap_rec(rec_file):
 def run_supply2_test():
     slave_d = os.path.join("opt_supply2_chance")
     pyemu.os_utils.start_workers(os.path.join(slave_d, "template"), exe_path, "supply2_pest.base.pst",
-                                master_dir=os.path.join(slave_d, "master"), worker_root=slave_d, num_slaves=10,
+                                master_dir=os.path.join(slave_d, "master"), worker_root=slave_d, num_workers=10,
                                 verbose=True,port=4200)
 
     opt = None
@@ -139,7 +139,7 @@ def est_res_test():
     pst.pestpp_options["opt_std_weights"] = True
     pst.write(os.path.join(t_d,"supply2_pest.base.pst"))
     pyemu.os_utils.start_workers(os.path.join(slave_d, "template"), exe_path, "supply2_pest.base.pst",
-                                master_dir=os.path.join(slave_d, "master"), worker_root=slave_d, num_slaves=10,
+                                master_dir=os.path.join(slave_d, "master"), worker_root=slave_d, num_workers=10,
                                 verbose=True,port=4200)
 
     opt = None
