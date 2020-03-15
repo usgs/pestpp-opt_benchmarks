@@ -75,6 +75,7 @@ def std_weights_test():
 
     pst.pestpp_options["opt_std_weights"] = False
     pst.write(new_pst_file)
+   
     pyemu.os_utils.run("{0} {1}".format(exe_path, os.path.split(new_pst_file)[-1]), cwd=d)
     pr_unc2 = scrap_rec(new_pst_file.replace(".pst", ".rec"))
     print(pr_unc2)
@@ -110,6 +111,19 @@ def scrap_rec(rec_file):
                 break
     return unc
 
+
+def run_dewater_test():
+    slave_d = os.path.join("opt_dewater_chance")
+    pyemu.os_utils.start_workers(os.path.join(slave_d, "template"), exe_path, "dewater_pest.base.pst",
+                                master_dir=os.path.join(slave_d, "master"), worker_root=slave_d, num_workers=10,
+                                verbose=True,port=4200)
+
+    opt = None
+    with open(os.path.join(slave_d, "master", "dewater_pest.base.rec"), 'r') as f:
+        for line in f:
+            if "iteration 1 objective function value:" in line:
+                opt = float(line.strip().split()[-2])
+    assert opt is not None
 
 def run_supply2_test():
     slave_d = os.path.join("opt_supply2_chance")
@@ -214,7 +228,8 @@ def stack_test():
 
 
 if __name__ == "__main__":
-    #std_weights_test()
-    #run_supply2_test()
-    #est_res_test()
+    std_weights_test()
+    run_dewater_test()
+    run_supply2_test()
+    est_res_test()
     stack_test()
