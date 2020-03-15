@@ -32,7 +32,7 @@ else:
 
 
 def std_weights_test():
-    d = os.path.join("opt_dewater_chance", "test_std_weights2")
+    d = os.path.join("opt_dewater_chance", "test_std_weights")
     if os.path.exists(d):
         shutil.rmtree(d)
     shutil.copytree(os.path.join("opt_dewater_chance", "template"), d)
@@ -81,7 +81,7 @@ def std_weights_test():
     for fore in forecast_names:
         dif = np.abs(pr_unc_py[fore] - pr_unc2[fore])
         print(fore, pr_unc_py[fore], pr_unc2[fore], dif)
-        assert dif < 1.0e-4
+        assert dif < 1.0e-4,dif
 
 
 def scrap_rec(rec_file):
@@ -148,7 +148,7 @@ def est_res_test():
             if "iteration 1 objective function value:" in line:
                 opt = float(line.strip().split()[-2])
     assert opt is not None
-    res_est1 = pyemu.pst_utils.read_resfile(os.path.join(m_d,"supply2_pest.base.1.est+fosm.rei"))
+    res_est1 = pyemu.pst_utils.read_resfile(os.path.join(m_d,"supply2_pest.base.1.est+chance.rei"))
 
     for f in ["supply2_pest.base.1.jcb","supply2_pest.base.1.jcb.rei"]:
         shutil.copy2(os.path.join(m_d,f),os.path.join(t_d,f))
@@ -162,14 +162,59 @@ def est_res_test():
         shutil.rmtree(m_d)
     shutil.copytree(t_d,m_d)
     pyemu.os_utils.run("{0} pest_est_res.pst".format(exe_path),cwd=m_d)
-    res_est2 = pyemu.pst_utils.read_resfile(os.path.join(m_d,"pest_est_res.1.est+fosm.rei"))
+    res_est2 = pyemu.pst_utils.read_resfile(os.path.join(m_d,"pest_est_res.1.est+chance.rei"))
     diff = (res_est1.modelled - res_est2.modelled).apply(np.abs)
     print(diff.sum())
     assert diff.sum() < 1.0e-10
 
+def stack_test():
+    d = os.path.join("opt_dewater_chance", "stack_test")
+    if os.path.exists(d):
+        shutil.rmtree(d)
+    shutil.copytree(os.path.join("opt_dewater_chance", "template"), d)
+    pst_file = os.path.join(d, "dewater_pest.base.pst")
+    pst = pyemu.Pst(pst_file)
+    par = pst.parameter_data
+    par.loc[par.partrans=="fixed","partrans"] = "log"
+    pst.pestpp_options["opt_risk"] = 0.1
+    pst.pestpp_options["opt_stack_size"] = 10
+    pst.control_data.noptmax = 1
+    new_pst_file = os.path.join(d, "test.pst")
+
+    pst.write(new_pst_file)
+    pyemu.os_utils.run("{0} {1}".format(exe_path, os.path.split(new_pst_file)[-1]), cwd=d)
+    
+    par_stack = "test.1.par_stack.csv"
+    assert os.path.exists(os.path.join(d,par_stack))
+    shutil.copy2(os.path.join(d,par_stack),os.path.join("opt_dewater_chance", "template","par_stack.csv"))
+    pst.pestpp_options["opt_par_stack"] = "par_stack.csv"
+    
+    d = d + "_par_stack"
+    if os.path.exists(d):
+        shutil.rmtree(d)
+    shutil.copytree(os.path.join("opt_dewater_chance", "template"), d)
+    pst.write(os.path.join(d,"test.pst"))
+    pyemu.os_utils.run("{0} {1}".format(exe_path, "test.pst"), cwd=d)
+    
+    par_stack = "test.1.par_stack.csv"
+    assert os.path.exists(os.path.join(d,par_stack))
+    obs_stack = "test.1.obs_stack.csv"
+    assert os.path.exists(os.path.join(d,obs_stack))
+    shutil.copy2(os.path.join(d,obs_stack),os.path.join("opt_dewater_chance", "template","obs_stack.csv"))
+    shutil.copy2(os.path.join(d,par_stack),os.path.join("opt_dewater_chance", "template","par_stack.csv"))
+    pst.pestpp_options["opt_obs_stack"] = "obs_stack.csv"
+    pst.pestpp_options["opt_par_stack"] = "par_stack.csv"
+    
+    d = d + "_obs_stack"
+    if os.path.exists(d):
+        shutil.rmtree(d)
+    shutil.copytree(os.path.join("opt_dewater_chance", "template"), d)
+    pst.write(os.path.join(d,"test.pst"))
+    pyemu.os_utils.run("{0} {1}".format(exe_path, "test.pst"), cwd=d)   
 
 
 if __name__ == "__main__":
     #std_weights_test()
     #run_supply2_test()
-    est_res_test()
+    #est_res_test()
+    stack_test()

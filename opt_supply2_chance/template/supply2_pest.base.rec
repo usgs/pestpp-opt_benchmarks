@@ -1,10 +1,20 @@
-             pestpp-opt version 4.0.4
+             pestpp-opt version 
 
-                 by the petspp development team
+       by the pestpp development team
+
+
+
+version: 4.2.16
+binary compiled on Oct 22 2019 at 11:52:33
 
 using control file: "supply2_pest.base.pst"
+in directory: "C:\Dev\pestpp\pestpp-opt_benchmarks\opt_supply2_chance\template"
 
-noptmax = 0, resetting max_run_fail = 1
+Note: 3 unused lines in pest control file:
+  -->  line number 6: '2.000000E+01  -3.000000E+00   3.000000E-01   1.000000E-02        -7       999          lamforgive        noderforgive' 
+  -->  line number 10: '0         0         0         0             jcosave          verboserec          jcosaveitn          reisaveitn          parsaveitn        noparsaverun' 
+  -->  line number 12: '1' 
+parameter warning: 11 parameters are at lower bound
 Model command line(s):- 
     python supply2.py
 
@@ -2042,75 +2052,75 @@ s3r05_12                                30000            less_obs               
 
 
 Prior information
-PI_CONST1   + 1 * Q1 = 80000   1   LESS_PI
+pi_const1   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2A = 80000   1   LESS_PI
-PI_CONST10   + 1 * Q1 = 25000   1   GREATER_PI
+pi_const10   + 1 * Q1 = 25000   1   GREATER_PI
  + 1 * Q2A = 25000   1   GREATER_PI
-PI_CONST11   + 1 * Q1 = 80000   1   LESS_PI
+pi_const11   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2B = 80000   1   LESS_PI
  + 1 * Q4A = 80000   1   LESS_PI
-PI_CONST12   + 1 * Q1 = 25000   1   GREATER_PI
+pi_const12   + 1 * Q1 = 25000   1   GREATER_PI
  + 1 * Q2B = 25000   1   GREATER_PI
  + 1 * Q4A = 25000   1   GREATER_PI
-PI_CONST13   + 1 * Q1 = 80000   1   LESS_PI
+pi_const13   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2C = 80000   1   LESS_PI
-PI_CONST14   + 1 * Q1 = 25000   1   GREATER_PI
+pi_const14   + 1 * Q1 = 25000   1   GREATER_PI
  + 1 * Q2C = 25000   1   GREATER_PI
-PI_CONST15   + 1 * Q1 = 80000   1   LESS_PI
+pi_const15   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2D = 80000   1   LESS_PI
  + 1 * Q4B = 80000   1   LESS_PI
-PI_CONST16   + 1 * Q1 = 25000   1   GREATER_PI
+pi_const16   + 1 * Q1 = 25000   1   GREATER_PI
  + 1 * Q2D = 25000   1   GREATER_PI
  + 1 * Q4B = 25000   1   GREATER_PI
-PI_CONST17   + 1 * Q1 = 80000   1   LESS_PI
+pi_const17   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2A = 80000   1   LESS_PI
  + 1 * IM9 = 80000   1   LESS_PI
-PI_CONST18   + 1 * Q1 = 45000   1   GREATER_PI
+pi_const18   + 1 * Q1 = 45000   1   GREATER_PI
  + 1 * Q2A = 45000   1   GREATER_PI
  + 1 * IM9 = 45000   1   GREATER_PI
-PI_CONST19   + 1 * Q1 = 80000   1   LESS_PI
+pi_const19   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2B = 80000   1   LESS_PI
  + 1 * Q4A = 80000   1   LESS_PI
  + 1 * IM10 = 80000   1   LESS_PI
-PI_CONST2   + 1 * Q1 = 30000   1   GREATER_PI
+pi_const2   + 1 * Q1 = 30000   1   GREATER_PI
  + 1 * Q2A = 30000   1   GREATER_PI
-PI_CONST20   + 1 * Q1 = 45000   1   GREATER_PI
+pi_const20   + 1 * Q1 = 45000   1   GREATER_PI
  + 1 * Q2B = 45000   1   GREATER_PI
  + 1 * Q4A = 45000   1   GREATER_PI
  + 1 * IM10 = 45000   1   GREATER_PI
-PI_CONST21   + 1 * Q1 = 80000   1   LESS_PI
+pi_const21   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2C = 80000   1   LESS_PI
  + 1 * IM11 = 80000   1   LESS_PI
-PI_CONST22   + 1 * Q1 = 45000   1   GREATER_PI
+pi_const22   + 1 * Q1 = 45000   1   GREATER_PI
  + 1 * Q2C = 45000   1   GREATER_PI
  + 1 * IM11 = 45000   1   GREATER_PI
-PI_CONST23   + 1 * Q1 = 80000   1   LESS_PI
+pi_const23   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2D = 80000   1   LESS_PI
  + 1 * Q4B = 80000   1   LESS_PI
  + 1 * IM12 = 80000   1   LESS_PI
-PI_CONST24   + 1 * Q1 = 45000   1   GREATER_PI
+pi_const24   + 1 * Q1 = 45000   1   GREATER_PI
  + 1 * Q2D = 45000   1   GREATER_PI
  + 1 * Q4B = 45000   1   GREATER_PI
  + 1 * IM12 = 45000   1   GREATER_PI
-PI_CONST3   + 1 * Q1 = 80000   1   LESS_PI
+pi_const3   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2B = 80000   1   LESS_PI
  + 1 * Q4A = 80000   1   LESS_PI
-PI_CONST4   + 1 * Q1 = 30000   1   GREATER_PI
+pi_const4   + 1 * Q1 = 30000   1   GREATER_PI
  + 1 * Q2B = 30000   1   GREATER_PI
  + 1 * Q4A = 30000   1   GREATER_PI
-PI_CONST5   + 1 * Q1 = 80000   1   LESS_PI
+pi_const5   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2C = 80000   1   LESS_PI
-PI_CONST6   + 1 * Q1 = 30000   1   GREATER_PI
+pi_const6   + 1 * Q1 = 30000   1   GREATER_PI
  + 1 * Q2C = 30000   1   GREATER_PI
-PI_CONST7   + 1 * Q1 = 80000   1   LESS_PI
+pi_const7   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2D = 80000   1   LESS_PI
  + 1 * Q4B = 80000   1   LESS_PI
-PI_CONST8   + 1 * Q1 = 30000   1   GREATER_PI
+pi_const8   + 1 * Q1 = 30000   1   GREATER_PI
  + 1 * Q2D = 30000   1   GREATER_PI
  + 1 * Q4B = 30000   1   GREATER_PI
-PI_CONST9   + 1 * Q1 = 80000   1   LESS_PI
+pi_const9   + 1 * Q1 = 80000   1   LESS_PI
  + 1 * Q2A = 80000   1   LESS_PI
-PI_OBJ_FUNC   + 1.095 * Q1 = 0   1   OBJ_FUNC
+pi_obj_func   + 1.095 * Q1 = 0   1   OBJ_FUNC
  + 0.276 * Q2A = 0   1   OBJ_FUNC
  + 0.273 * Q2B = 0   1   OBJ_FUNC
  + 0.273 * Q2C = 0   1   OBJ_FUNC
@@ -2123,3 +2133,356 @@ PI_OBJ_FUNC   + 1.095 * Q1 = 0   1   OBJ_FUNC
  - 0.1092 * IM12 = 0   1   OBJ_FUNC
 
 
+   -----    Starting Optimization Iterations    ----    
+
+++opt_std_weights = True, using the following weights as prior and posterior chance constraint uncertainty: 
+   model-based constraint   std (weight)       variance
+                 S1R14_09              1              1
+                 S1R14_10              1              1
+                 S1R14_11              1              1
+                 S1R14_12              1              1
+                 S1R21_11              1              1
+                 S1R21_12              1              1
+                 S2R08_09              1              1
+                 S2R08_10              1              1
+                 S2R08_11              1              1
+                 S2R08_12              1              1
+                 S3R05_11              1              1
+                 S3R05_12              1              1
+
+  -------------------------------------------------------------
+  ---  sequential linear programming problem information  ---  
+  -------------------------------------------------------------
+
+-->number of iterations of sequential linear programming (noptmax): 1
+-->objective function sense (direction): maximize
+-->number of decision variable: 11
+-->number of observation constraints: 12
+-->number of prior information constraints: 46
+-->using FOSM-based chance constraints - good choice!
+-->++opt_risk and corresponding probit function value:       0.05            -1.64467
+-->number of adjustable parameters for FOSM calcs: 0
+-->number of non-zero weight observations for FOSM calcs: 0
+-->repeat FOSM calcs every: 1 iterations
+
+
+
+  ---  decision variables active in SLP  ---  
+  ---  objective function coefficients  ---  
+name                obj func coefficient     
+IM10                -0.1092                  
+IM11                -0.01092                 
+IM12                -0.1092                  
+IM9                 -0.1104                  
+Q1                  1.095                    
+Q2A                 0.276                    
+Q2B                 0.273                    
+Q2C                 0.273                    
+Q2D                 0.273                    
+Q4A                 0.273                    
+Q4B                 0.273                    
+
+  ---  objective function value (using initial dec var values): 0
+
+ note: bound and initial value info reported in 'parameter data' section
+
+
+  ---  observation constraints in SLP  ---  
+name                sense               value               
+S1R14_09            less_than           15000               
+S1R14_10            less_than           15000               
+S1R14_11            less_than           15000               
+S1R14_12            less_than           15000               
+S1R21_11            less_than           20000               
+S1R21_12            less_than           20000               
+S2R08_09            less_than           15000               
+S2R08_10            less_than           15000               
+S2R08_11            less_than           15000               
+S2R08_12            less_than           15000               
+S3R05_11            less_than           30000               
+S3R05_12            less_than           30000               
+
+  ---  prior information constraints in SLP  ---  
+name                sense               value               
+PI_CONST1           less_than           80000               
+PI_CONST2           greater_than        30000               
+PI_CONST3           less_than           80000               
+PI_CONST4           greater_than        30000               
+PI_CONST5           less_than           80000               
+PI_CONST6           greater_than        30000               
+PI_CONST7           less_than           80000               
+PI_CONST8           greater_than        30000               
+PI_CONST9           less_than           80000               
+PI_CONST10          greater_than        25000               
+PI_CONST11          less_than           80000               
+PI_CONST12          greater_than        25000               
+PI_CONST13          less_than           80000               
+PI_CONST14          greater_than        25000               
+PI_CONST15          less_than           80000               
+PI_CONST16          greater_than        25000               
+PI_CONST17          less_than           80000               
+PI_CONST18          greater_than        45000               
+PI_CONST19          less_than           80000               
+PI_CONST20          greater_than        45000               
+PI_CONST21          less_than           80000               
+PI_CONST22          greater_than        45000               
+PI_CONST23          less_than           80000               
+PI_CONST24          greater_than        45000               
+_LB_IM10            greater_than        0                   
+_UB_IM10            less_than           1e+06               
+_LB_IM11            greater_than        0                   
+_UB_IM11            less_than           1e+06               
+_LB_IM12            greater_than        0                   
+_UB_IM12            less_than           1e+06               
+_LB_IM9             greater_than        0                   
+_UB_IM9             less_than           1e+06               
+_LB_Q1              greater_than        0                   
+_UB_Q1              less_than           50000               
+_LB_Q2A             greater_than        0                   
+_UB_Q2A             less_than           50000               
+_LB_Q2B             greater_than        0                   
+_UB_Q2B             less_than           50000               
+_LB_Q2C             greater_than        0                   
+_UB_Q2C             less_than           50000               
+_LB_Q2D             greater_than        0                   
+_UB_Q2D             less_than           50000               
+_LB_Q4A             greater_than        0                   
+_UB_Q4A             less_than           50000               
+_LB_Q4B             greater_than        0                   
+_UB_Q4B             less_than           50000               
+
+
+  ---  chance constraint FOSM information  ---  
+   adjustable parameters used in FOSM calculations:
+
+
+
+  ---  Note: No nonzero weight observations found.
+           Prior constraint uncertainty will be used in chance constraint calculations
+
+
+  ---------------------------------
+  --- starting LP iteration 1  ---  
+  ---------------------------------
+
+
+  ---  calculating response matrix for iteration 1  ---  
+
+saving iteration 1 reponse matrix to file: supply2_pest.base.1.jcb
+  ---  calculating FOSM-based chance constraint components  ---  
+  ---   done with FOSM-based chance constraint calculations  ---  
+
+
+  FOSM-based chance constraint information at start of iteration 1
+name                     sense       required      sim value    prior stdev     post stdev         offset  new sim value
+S1R14_09             less_than          15000              0              1              1       -1.64467       -1.64467
+S1R14_10             less_than          15000              0              1              1       -1.64467       -1.64467
+S1R14_11             less_than          15000              0              1              1       -1.64467       -1.64467
+S1R14_12             less_than          15000              0              1              1       -1.64467       -1.64467
+S1R21_11             less_than          20000              0              1              1       -1.64467       -1.64467
+S1R21_12             less_than          20000              0              1              1       -1.64467       -1.64467
+S2R08_09             less_than          15000              0              1              1       -1.64467       -1.64467
+S2R08_10             less_than          15000              0              1              1       -1.64467       -1.64467
+S2R08_11             less_than          15000              0              1              1       -1.64467       -1.64467
+S2R08_12             less_than          15000              0              1              1       -1.64467       -1.64467
+S3R05_11             less_than          30000              0              1              1       -1.64467       -1.64467
+S3R05_12             less_than          30000              0              1              1       -1.64467       -1.64467
+  note: 'offset' is the value added to the simulated constraint value to account
+        for the uncertainty in the constraint value arsing from uncertainty in the 
+        adjustable parameters identified in the control file.
+
+
+  observation constraint information at start of iteration 1
+name                          sense       required      sim value       residual    lower bound    upper bound
+S1R14_09                  less_than          15000       -1.64467        15001.6  -1.79769e+308        15001.6
+S1R14_10                  less_than          15000       -1.64467        15001.6  -1.79769e+308        15001.6
+S1R14_11                  less_than          15000       -1.64467        15001.6  -1.79769e+308        15001.6
+S1R14_12                  less_than          15000       -1.64467        15001.6  -1.79769e+308        15001.6
+S1R21_11                  less_than          20000       -1.64467        20001.6  -1.79769e+308        20001.6
+S1R21_12                  less_than          20000       -1.64467        20001.6  -1.79769e+308        20001.6
+S2R08_09                  less_than          15000       -1.64467        15001.6  -1.79769e+308        15001.6
+S2R08_10                  less_than          15000       -1.64467        15001.6  -1.79769e+308        15001.6
+S2R08_11                  less_than          15000       -1.64467        15001.6  -1.79769e+308        15001.6
+S2R08_12                  less_than          15000       -1.64467        15001.6  -1.79769e+308        15001.6
+S3R05_11                  less_than          30000       -1.64467        30001.6  -1.79769e+308        30001.6
+S3R05_12                  less_than          30000       -1.64467        30001.6  -1.79769e+308        30001.6
+
+  prior information constraint information at start of iteration 1
+name                          sense       required      sim value       residual    lower bound    upper bound
+PI_CONST1                 less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST2              greater_than          30000              0         -30000          30000   1.79769e+308
+PI_CONST3                 less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST4              greater_than          30000              0         -30000          30000   1.79769e+308
+PI_CONST5                 less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST6              greater_than          30000              0         -30000          30000   1.79769e+308
+PI_CONST7                 less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST8              greater_than          30000              0         -30000          30000   1.79769e+308
+PI_CONST9                 less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST10             greater_than          25000              0         -25000          25000   1.79769e+308
+PI_CONST11                less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST12             greater_than          25000              0         -25000          25000   1.79769e+308
+PI_CONST13                less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST14             greater_than          25000              0         -25000          25000   1.79769e+308
+PI_CONST15                less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST16             greater_than          25000              0         -25000          25000   1.79769e+308
+PI_CONST17                less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST18             greater_than          45000              0         -45000          45000   1.79769e+308
+PI_CONST19                less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST20             greater_than          45000              0         -45000          45000   1.79769e+308
+PI_CONST21                less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST22             greater_than          45000              0         -45000          45000   1.79769e+308
+PI_CONST23                less_than          80000              0         -80000  -1.79769e+308          80000
+PI_CONST24             greater_than          45000              0         -45000          45000   1.79769e+308
+_LB_IM10               greater_than              0              0              0             -0   1.79769e+308
+_UB_IM10                  less_than          1e+06              0         -1e+06  -1.79769e+308          1e+06
+_LB_IM11               greater_than              0              0              0             -0   1.79769e+308
+_UB_IM11                  less_than          1e+06              0         -1e+06  -1.79769e+308          1e+06
+_LB_IM12               greater_than              0              0              0             -0   1.79769e+308
+_UB_IM12                  less_than          1e+06              0         -1e+06  -1.79769e+308          1e+06
+_LB_IM9                greater_than              0              0              0             -0   1.79769e+308
+_UB_IM9                   less_than          1e+06              0         -1e+06  -1.79769e+308          1e+06
+_LB_Q1                 greater_than              0              0              0             -0   1.79769e+308
+_UB_Q1                    less_than          50000              0         -50000  -1.79769e+308          50000
+_LB_Q2A                greater_than              0              0              0             -0   1.79769e+308
+_UB_Q2A                   less_than          50000              0         -50000  -1.79769e+308          50000
+_LB_Q2B                greater_than              0              0              0             -0   1.79769e+308
+_UB_Q2B                   less_than          50000              0         -50000  -1.79769e+308          50000
+_LB_Q2C                greater_than              0              0              0             -0   1.79769e+308
+_UB_Q2C                   less_than          50000              0         -50000  -1.79769e+308          50000
+_LB_Q2D                greater_than              0              0              0             -0   1.79769e+308
+_UB_Q2D                   less_than          50000              0         -50000  -1.79769e+308          50000
+_LB_Q4A                greater_than              0              0              0             -0   1.79769e+308
+_UB_Q4A                   less_than          50000              0         -50000  -1.79769e+308          50000
+_LB_Q4B                greater_than              0              0              0             -0   1.79769e+308
+_UB_Q4B                   less_than          50000              0         -50000  -1.79769e+308          50000
+number of nonzero elements in response matrix: 47 of 132
+  ---  solving linear program for iteration 1  ---  
+ iteration 1 linear solution is proven optimal
+
+
+  ---  linear program solution complete for iteration 1  ---  
+  ---  processing results for iteration 1 LP solution  ---  
+
+
+
+     decision variable information at end of SLP iteration 1
+
+name                        current            new   objfunc coef    cur contrib    new contrib   reduced cost           simplex status
+IM10                              0              0        -0.1092             -0             -0        -0.1092           at lower bound
+IM11                              0        14761.6       -0.01092             -0       -161.197             -0                    basic
+IM12                              0        7068.65        -0.1092             -0       -771.897             -0                    basic
+IM9                               0              0        -0.1104             -0             -0        -0.1104           at lower bound
+Q1                                0         3630.6          1.095              0        3975.51             -0                    basic
+Q2A                               0          50000          0.276              0          13800       0.184017           at upper bound
+Q2B                               0          27569          0.273              0        7526.34             -0                    basic
+Q2C                               0        26607.8          0.273              0        7263.92             -0                    basic
+Q2D                               0        26473.4          0.273              0        7227.23             -0                    basic
+Q4A                               0        48800.4          0.273              0        13322.5             -0                    basic
+Q4B                               0        7827.38          0.273              0        2136.88             -0                    basic
+
+
+  ---  iteration 1 objective function value:         54319.3  ---  
+
+
+
+     prior information constraint information at end of SLP iteration 1
+
+name                          sense       required           simplex status          price        current       residual            new       residual
+PI_CONST1                 less_than          80000                    basic             -0              0         -80000        53630.6       -26369.4
+PI_CONST2              greater_than          30000                    basic             -0              0         -30000        53630.6        23630.6
+PI_CONST3                 less_than          80000           at upper bound       0.261845              0         -80000          80000   -1.45519e-11
+PI_CONST4              greater_than          30000                    basic             -0              0         -30000          80000          50000
+PI_CONST5                 less_than          80000                    basic             -0              0         -80000        30238.4       -49761.6
+PI_CONST6              greater_than          30000                    basic             -0              0         -30000        30238.4         238.38
+PI_CONST7                 less_than          80000                    basic             -0              0         -80000        37931.3       -42068.7
+PI_CONST8              greater_than          30000                    basic             -0              0         -30000        37931.3        7931.35
+PI_CONST9                 less_than          80000                    basic             -0              0         -80000        53630.6       -26369.4
+PI_CONST10             greater_than          25000                    basic             -0              0         -25000        53630.6        28630.6
+PI_CONST11                less_than          80000                    basic             -0              0         -80000          80000   -1.45519e-11
+PI_CONST12             greater_than          25000                    basic             -0              0         -25000          80000          55000
+PI_CONST13                less_than          80000                    basic             -0              0         -80000        30238.4       -49761.6
+PI_CONST14             greater_than          25000                    basic             -0              0         -25000        30238.4        5238.38
+PI_CONST15                less_than          80000                    basic             -0              0         -80000        37931.3       -42068.7
+PI_CONST16             greater_than          25000                    basic             -0              0         -25000        37931.3        12931.3
+PI_CONST17                less_than          80000                    basic             -0              0         -80000        53630.6       -26369.4
+PI_CONST18             greater_than          45000                    basic             -0              0         -45000        53630.6         8630.6
+PI_CONST19                less_than          80000                    basic             -0              0         -80000          80000   -1.45519e-11
+PI_CONST20             greater_than          45000                    basic             -0              0         -45000          80000          35000
+PI_CONST21                less_than          80000                    basic             -0              0         -80000          45000         -35000
+PI_CONST22             greater_than          45000           at lower bound       -0.01092              0         -45000          45000              0
+PI_CONST23                less_than          80000                    basic             -0              0         -80000          45000         -35000
+PI_CONST24             greater_than          45000           at lower bound        -0.1092              0         -45000          45000              0
+_LB_IM10               greater_than              0                    basic             -0              0              0              0              0
+_UB_IM10                  less_than          1e+06                    basic             -0              0         -1e+06              0         -1e+06
+_LB_IM11               greater_than              0                    basic             -0              0              0        14761.6        14761.6
+_UB_IM11                  less_than          1e+06                    basic             -0              0         -1e+06        14761.6        -985238
+_LB_IM12               greater_than              0                    basic             -0              0              0        7068.65        7068.65
+_UB_IM12                  less_than          1e+06                    basic             -0              0         -1e+06        7068.65        -992931
+_LB_IM9                greater_than              0                    basic             -0              0              0              0              0
+_UB_IM9                   less_than          1e+06                    basic             -0              0         -1e+06              0         -1e+06
+_LB_Q1                 greater_than              0                    basic             -0              0              0         3630.6         3630.6
+_UB_Q1                    less_than          50000                    basic             -0              0         -50000         3630.6       -46369.4
+_LB_Q2A                greater_than              0                    basic             -0              0              0          50000          50000
+_UB_Q2A                   less_than          50000                    basic             -0              0         -50000          50000    1.45519e-11
+_LB_Q2B                greater_than              0                    basic             -0              0              0          27569          27569
+_UB_Q2B                   less_than          50000                    basic             -0              0         -50000          27569         -22431
+_LB_Q2C                greater_than              0                    basic             -0              0              0        26607.8        26607.8
+_UB_Q2C                   less_than          50000                    basic             -0              0         -50000        26607.8       -23392.2
+_LB_Q2D                greater_than              0                    basic             -0              0              0        26473.4        26473.4
+_UB_Q2D                   less_than          50000                    basic             -0              0         -50000        26473.4       -23526.6
+_LB_Q4A                greater_than              0                    basic             -0              0              0        48800.4        48800.4
+_UB_Q4A                   less_than          50000                    basic             -0              0         -50000        48800.4       -1199.62
+_LB_Q4B                greater_than              0                    basic             -0              0              0        7827.38        7827.38
+_UB_Q4B                   less_than          50000                    basic             -0              0         -50000        7827.38       -42172.6
+
+
+     estimated constraint information at end of SLP iteration 1
+
+name                          sense       required           simplex status          price    fosm offset        current       residual            new       residual
+S1R14_09                  less_than          15000           at upper bound       0.361335       -1.64467       -1.64467        15001.6          15000   -1.92224e-12
+S1R14_10                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6        9727.31        5272.69
+S1R14_11                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6        9278.79        5721.21
+S1R14_12                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6         9141.5         5858.5
+S1R21_11                  less_than          20000           at upper bound       0.428443       -1.64467       -1.64467        20001.6          20000   -3.74123e-12
+S1R21_12                  less_than          20000           at upper bound       0.120818       -1.64467       -1.64467        20001.6          20000   -1.03251e-13
+S2R08_09                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6        1056.36        13943.6
+S2R08_10                  less_than          15000           at upper bound      0.0350268       -1.64467       -1.64467        15001.6          15000   -1.92224e-12
+S2R08_11                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6         670.11        14329.9
+S2R08_12                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6        2774.01          12226
+S3R05_11                  less_than          30000                    basic             -0       -1.64467       -1.64467        30001.6        24066.6        5933.41
+S3R05_12                  less_than          30000           at upper bound       0.421445       -1.64467       -1.64467        30001.6          30000    3.53473e-12
+  ---  running the model once with optimal decision var values
+
+
+     simulated constraint information at end of SLP iteration 1
+
+name                          sense       required           simplex status          price    fosm offset        current       residual            new       residual
+S1R14_09                  less_than          15000           at upper bound       0.361335       -1.64467       -1.64467        15001.6        15078.4       -78.3553
+S1R14_10                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6        9798.36        5201.64
+S1R14_11                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6        9198.36        5801.64
+S1R14_12                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6        9148.36        5851.64
+S1R21_11                  less_than          20000           at upper bound       0.428443       -1.64467       -1.64467        20001.6        19918.4        81.6447
+S1R21_12                  less_than          20000           at upper bound       0.120818       -1.64467       -1.64467        20001.6        19928.4        71.6447
+S2R08_09                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6        958.355        14041.6
+S2R08_10                  less_than          15000           at upper bound      0.0350268       -1.64467       -1.64467        15001.6        14938.4        61.6447
+S2R08_11                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6        778.355        14221.6
+S2R08_12                  less_than          15000                    basic             -0       -1.64467       -1.64467        15001.6        2828.36        12171.6
+S3R05_11                  less_than          30000                    basic             -0       -1.64467       -1.64467        30001.6        23498.4        6501.64
+S3R05_12                  less_than          30000           at upper bound       0.421445       -1.64467       -1.64467        30001.6        29698.4        301.645
+
+  ---  convergence check iteration 1  ---  
+
+-->                     ++opt_iter_tol:          0.001
+-->scaled max decision variable change:          50000
+-->      scaled  max constraint change:          29700
+-->   scaled objective function change:              1
+-->the following constraints are not satisfied (distance shown):
+-->   S1R14_09        78.3553
+
+  ---  objective function sequence  ---   
+ iteration       obj func
+         0              0
+         1        54319.3
+  ---  best objective function value: 54319.3
+  ---  running model one last time with best decision variables  ---  
+Number of forward model runs performed during optimiztion: 10
