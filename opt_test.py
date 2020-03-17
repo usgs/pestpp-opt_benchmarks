@@ -197,7 +197,8 @@ def stack_test():
 
     pst.write(new_pst_file)
     pyemu.os_utils.run("{0} {1}".format(exe_path, os.path.split(new_pst_file)[-1]), cwd=d)
-    
+    rec1 = os.path.join(d,"test.rec")
+    assert os.path.exists(rec1)
     par_stack = "test.1.par_stack.csv"
     assert os.path.exists(os.path.join(d,par_stack))
     shutil.copy2(os.path.join(d,par_stack),os.path.join("opt_dewater_chance", "template","par_stack.csv"))
@@ -209,7 +210,8 @@ def stack_test():
     shutil.copytree(os.path.join("opt_dewater_chance", "template"), d)
     pst.write(os.path.join(d,"test.pst"))
     pyemu.os_utils.run("{0} {1}".format(exe_path, "test.pst"), cwd=d)
-    
+    rec2 = os.path.join(d,"test.rec")
+    assert os.path.exists(rec2)
     par_stack = "test.1.par_stack.csv"
     assert os.path.exists(os.path.join(d,par_stack))
     obs_stack = "test.1.obs_stack.csv"
@@ -225,6 +227,26 @@ def stack_test():
     shutil.copytree(os.path.join("opt_dewater_chance", "template"), d)
     pst.write(os.path.join(d,"test.pst"))
     pyemu.os_utils.run("{0} {1}".format(exe_path, "test.pst"), cwd=d)   
+    rec3 = os.path.join(d,"test.rec")
+    assert os.path.exists(rec3)
+
+    def get_obj(rec_file):
+        tag = "---  objective function sequence  ---"
+        with open(rec_file,'r') as f:
+            for line in f:
+                if tag in line:
+                    for _ in range(3):
+                        line = f.readline()
+                    #print(line)
+                    obj = float(line.strip().split()[-1])
+                    print(obj)
+                    return obj
+
+    obj1 = get_obj(rec1)
+    obj2 = get_obj(rec2)
+    obj3 = get_obj(rec3)
+    assert np.abs(obj1 - obj2) < 1.0e-1
+    assert np.abs(obj2 - obj3) < 1.0e-1
 
 
 if __name__ == "__main__":
