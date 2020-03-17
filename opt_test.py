@@ -113,30 +113,70 @@ def scrap_rec(rec_file):
 
 
 def run_dewater_test():
-    slave_d = os.path.join("opt_dewater_chance")
-    pyemu.os_utils.start_workers(os.path.join(slave_d, "template"), exe_path, "dewater_pest.base.pst",
-                                master_dir=os.path.join(slave_d, "master"), worker_root=slave_d, num_workers=10,
+    worker_d = os.path.join("opt_dewater_chance")
+    pyemu.os_utils.start_workers(os.path.join(worker_d, "template"), exe_path, "dewater_pest.base.pst",
+                                master_dir=os.path.join(worker_d, "master"), worker_root=worker_d, num_workers=10,
                                 verbose=True,port=4200)
 
     opt = None
-    with open(os.path.join(slave_d, "master", "dewater_pest.base.rec"), 'r') as f:
+    with open(os.path.join(worker_d, "master", "dewater_pest.base.rec"), 'r') as f:
         for line in f:
             if "iteration 1 objective function value:" in line:
                 opt = float(line.strip().split()[-2])
     assert opt is not None
+
+    pst = pyemu.Pst(os.path.join(worker_d,"template","dewater_pest.base.pst"))
+    pst.control_data.noptmax = 3
+    pst.write(os.path.join(worker_d,"template","test.pst"))
+    pyemu.os_utils.start_workers(os.path.join(worker_d, "template"), exe_path, "test.pst",
+                                master_dir=os.path.join(worker_d, "master"), worker_root=worker_d, num_workers=10,
+                                verbose=True,port=4200)
+    
+    with open(os.path.join(worker_d,"master","test.rec")) as f:
+        for line in f:
+            if "iteration       obj func" in line:
+                f.readline() # skip the initial obj func
+                lines = []
+                for _ in range(pst.control_data.noptmax):
+                    lines.append(f.readline())
+    obj_funcs = np.array([float(line.strip().split()[-1]) for line in lines])
+    print(obj_funcs)
+    assert np.abs(obj_funcs.max() - obj_funcs.min()) < 0.1
+
+
 
 def run_supply2_test():
-    slave_d = os.path.join("opt_supply2_chance")
-    pyemu.os_utils.start_workers(os.path.join(slave_d, "template"), exe_path, "supply2_pest.base.pst",
-                                master_dir=os.path.join(slave_d, "master"), worker_root=slave_d, num_workers=10,
+    worker_d = os.path.join("opt_supply2_chance")
+    pyemu.os_utils.start_workers(os.path.join(worker_d, "template"), exe_path, "supply2_pest.base.pst",
+                                master_dir=os.path.join(worker_d, "master"), worker_root=worker_d, num_workers=10,
                                 verbose=True,port=4200)
 
     opt = None
-    with open(os.path.join(slave_d, "master", "supply2_pest.base.rec"), 'r') as f:
+    with open(os.path.join(worker_d, "master", "supply2_pest.base.rec"), 'r') as f:
         for line in f:
             if "iteration 1 objective function value:" in line:
                 opt = float(line.strip().split()[-2])
     assert opt is not None
+
+    pst = pyemu.Pst(os.path.join(worker_d,"template","supply2_pest.base.pst"))
+    pst.control_data.noptmax = 3
+    pst.write(os.path.join(worker_d,"template","test.pst"))
+    pyemu.os_utils.start_workers(os.path.join(worker_d, "template"), exe_path, "test.pst",
+                                master_dir=os.path.join(worker_d, "master"), worker_root=worker_d, num_workers=10,
+                                verbose=True,port=4200)
+    
+    with open(os.path.join(worker_d,"master","test.rec")) as f:
+        for line in f:
+            if "iteration       obj func" in line:
+                f.readline() # skip the initial obj func
+                lines = []
+                for _ in range(pst.control_data.noptmax):
+                    lines.append(f.readline())
+    obj_funcs = np.array([float(line.strip().split()[-1]) for line in lines])
+    print(obj_funcs)
+    assert np.abs(obj_funcs.max() - obj_funcs.min()) < 0.1
+
+
 
 
 def est_res_test():
@@ -250,8 +290,8 @@ def stack_test():
 
 
 if __name__ == "__main__":
-    std_weights_test()
+    #std_weights_test()
     run_dewater_test()
-    run_supply2_test()
-    est_res_test()
-    stack_test()
+    # run_supply2_test()
+    # est_res_test()
+    # stack_test()
