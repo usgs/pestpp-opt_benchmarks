@@ -75,7 +75,7 @@ def std_weights_test():
 
     pst.pestpp_options["opt_std_weights"] = False
     pst.write(new_pst_file)
-   
+  
     pyemu.os_utils.run("{0} {1}".format(exe_path, os.path.split(new_pst_file)[-1]), cwd=d)
     pr_unc2 = scrap_rec(new_pst_file.replace(".pst", ".rec"))
     print(pr_unc2)
@@ -142,6 +142,30 @@ def run_dewater_test():
     obj_funcs = np.array([float(line.strip().split()[-1]) for line in lines])
     print(obj_funcs)
     assert np.abs(obj_funcs.max() - obj_funcs.min()) < 0.1
+
+    pst.pestpp_options["opt_risk"] = 0.95
+    pst.pestpp_options.pop("base_jacobian",None)
+    par = pst.parameter_data
+    adj_pars = par.loc[par.pargp=="h","parnme"]
+    pst.parameter_data.loc[adj_pars[0],"partrans"] = "log"
+    pst.parameter_data.loc[adj_pars[1:],"partrans"] = "tied"
+    pst.parameter_data.loc[adj_pars[1:],"partied"] = adj_pars[0]
+    pst.parameter_data.loc[["up_grad","dn_grad"],"partrans"] = "log"
+    pst.control_data.noptmax = 1
+    pst.write(os.path.join(worker_d,"template","test.pst"))
+    pyemu.os_utils.start_workers(os.path.join(worker_d, "template"), exe_path, "test.pst",
+                                master_dir=os.path.join(worker_d, "master"), worker_root=worker_d, num_workers=10,
+                                verbose=True,port=4200)
+    with open(os.path.join(worker_d,"master","test.rec")) as f:
+        for line in f:
+            if "iteration       obj func" in line:
+                f.readline() # skip the initial obj func
+                lines = []
+                for _ in range(pst.control_data.noptmax):
+                    lines.append(f.readline())
+    averse_obj_funcs = np.array([float(line.strip().split()[-1]) for line in lines])
+    print(averse_obj_funcs) 
+    
 
 
 
@@ -305,7 +329,7 @@ def stack_test():
 
 if __name__ == "__main__":
     #std_weights_test()
-    #run_dewater_test()
+    run_dewater_test()
     #run_supply2_test()
     # est_res_test()
-    stack_test()
+    #stack_test()
