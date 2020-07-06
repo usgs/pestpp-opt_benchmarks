@@ -327,9 +327,44 @@ def stack_test():
                                 master_dir=d, worker_root="opt_dewater_chance", num_workers=10,
                                 verbose=True,port=4200)
 
+
+def dewater_restart_test():
+    worker_d = os.path.join("opt_dewater_chance")
+    pst = pyemu.Pst(os.path.join(worker_d,"template","dewater_pest.base.pst"))
+    par = pst.parameter_data
+    par.loc[par.partrans=="fixed","partrans"] = "log"
+    pst.pestpp_options.pop("base_jacobian",None)
+    pst.control_data.noptmax = 1
+    pst.pestpp_options.pop("opt_risk",None)
+    pst.write(os.path.join(worker_d,"template","base.pst"))
+    pyemu.os_utils.start_workers(os.path.join(worker_d, "template"), exe_path, "base.pst",
+                                master_dir=os.path.join(worker_d, "master_base1"), worker_root=worker_d, num_workers=10,
+                                verbose=True,port=4200)
+
+    
+    pst.control_data.noptmax = 1
+    shutil.copy2(os.path.join(worker_d,"master_base1","base.1.jcb"),os.path.join(worker_d,"template","restart.jcb"))
+    pst.pestpp_options["base_jacobian"] = "restart.jcb"
+    pst.write(os.path.join(worker_d,"template","restart.pst"))
+    pyemu.os_utils.run("{0} restart.pst".format(exe_path),cwd=os.path.join(worker_d,"template"))
+    
+    with open(os.path.join(worker_d,"master","test.rec")) as f:
+        for line in f:
+            if "iteration       obj func" in line:
+                f.readline() # skip the initial obj func
+                lines = []
+                for _ in range(pst.control_data.noptmax):
+                    lines.append(f.readline())
+    obj_funcs = np.array([float(line.strip().split()[-1]) for line in lines])
+    print(obj_funcs)
+    assert np.abs(obj_funcs.max() - obj_funcs.min()) < 0.1
+
+    
+
 if __name__ == "__main__":
     #std_weights_test()
-    run_dewater_test()
+    #run_dewater_test()
     #run_supply2_test()
     # est_res_test()
     #stack_test()
+    dewater_restart_test()
