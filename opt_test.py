@@ -88,13 +88,15 @@ def std_weights_test():
 def scrap_rec(rec_file):
     unc = {}
     tag = "FOSM-based chance constraint information at start of iteration 1"
+    # this alt tag is to support mou dev 
+    tag_alt = "FOSM-based chance constraint/objective information at start of iteration 1"
     with open(rec_file, 'r') as f:
         while True:
             line = f.readline()
             if line == "":
                 break
 
-            if tag in line:
+            if tag in line or tag_alt in line:
                 f.readline()
                 while True:
                     line = f.readline()
@@ -362,9 +364,9 @@ def dewater_restart_test():
     
 
 if __name__ == "__main__":
-    #std_weights_test()
+    std_weights_test()
     #run_dewater_test()
     #run_supply2_test()
     # est_res_test()
     #stack_test()
-    dewater_restart_test()
+    #dewater_restart_test()
