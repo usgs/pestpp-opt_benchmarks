@@ -266,7 +266,7 @@ def stack_test():
     pyemu.os_utils.run("{0} {1}".format(exe_path, os.path.split(new_pst_file)[-1]), cwd=d)
     rec1 = os.path.join(d,"test.rec")
     assert os.path.exists(rec1)
-    par_stack = "test.1.par_stack.csv"
+    par_stack = "test.0.par_stack.csv"
     assert os.path.exists(os.path.join(d,par_stack))
     shutil.copy2(os.path.join(d,par_stack),os.path.join("opt_dewater_chance", "template","par_stack.csv"))
     pst.pestpp_options["opt_par_stack"] = "par_stack.csv"
@@ -279,7 +279,7 @@ def stack_test():
     pyemu.os_utils.run("{0} {1}".format(exe_path, "test.pst"), cwd=d)
     rec2 = os.path.join(d,"test.rec")
     assert os.path.exists(rec2)
-    par_stack = "test.1.par_stack.csv"
+    par_stack = "test.0.par_stack.csv"
     assert os.path.exists(os.path.join(d,par_stack))
     obs_stack = "test.1.obs_stack.csv"
     assert os.path.exists(os.path.join(d,obs_stack))
@@ -364,9 +364,10 @@ def dewater_restart_test():
     
 
 if __name__ == "__main__":
-    std_weights_test()
+    #std_weights_test()
     #run_dewater_test()
     #run_supply2_test()
     # est_res_test()
-    #stack_test()
+    shutil.copy2(os.path.join("..","exe","windows","x64","Debug","pestpp-opt.exe"),os.path.join("..","bin","win","pestpp-opt.exe"))
+    stack_test()
     #dewater_restart_test()
