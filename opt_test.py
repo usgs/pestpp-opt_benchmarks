@@ -89,7 +89,7 @@ def scrap_rec(rec_file):
     unc = {}
     tag = "FOSM-based chance constraint information at start of iteration 1"
     # this alt tag is to support mou dev 
-    tag_alt = "FOSM-based chance constraint/objective information at start of iteration 1"
+    tag_alt = "Chance constraint/objective information at start of iteration 1"
     with open(rec_file, 'r') as f:
         while True:
             line = f.readline()
@@ -364,10 +364,11 @@ def dewater_restart_test():
     
 
 if __name__ == "__main__":
-    #std_weights_test()
+
     #run_dewater_test()
     #run_supply2_test()
     # est_res_test()
     shutil.copy2(os.path.join("..","exe","windows","x64","Debug","pestpp-opt.exe"),os.path.join("..","bin","win","pestpp-opt.exe"))
-    stack_test()
+    #stack_test()
     #dewater_restart_test()
+    std_weights_test()
